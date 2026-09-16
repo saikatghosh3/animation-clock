@@ -41,6 +41,17 @@
     container-type:inline-size;
   }
 
+  @media (max-width: 640px){
+    body{
+      min-height:100svh;
+    }
+
+    .stage{
+      width:min(92vw, 72svh);
+      transform:translateX(-21%);
+    }
+  }
+
   .dial{
     position:absolute;
     inset:0;
@@ -58,7 +69,7 @@
     inset:0;
     transform-origin:71.36% 63.67%;
     will-change:transform;
-    transition:transform .65s ease-in-out;
+    transition:transform .38s cubic-bezier(.35,0,.15,1) .44s;
   }
 
   .tick{
@@ -80,11 +91,11 @@
   }
 
   .tick.vanish{
-    animation:vanish .65s ease-in forwards;
+    animation:vanish .38s ease-in .44s forwards;
   }
 
   .tick.last-tick.vanish{
-    animation:vanish-last .65s ease-in forwards;
+    animation:vanish-last .38s ease-in .44s forwards;
   }
 
   @keyframes vanish{
@@ -124,17 +135,19 @@
     background:var(--white);
     border-radius:50%;
     transform-origin:center bottom;
-    animation:bounce 1s cubic-bezier(.5,0,.6,1) infinite;
+    animation:bounce 1s cubic-bezier(.5,0,.35,1) infinite;
   }
 
   @keyframes bounce{
-    0%   { transform:translateY(0)     scale(1, .8); }
-    8%   { transform:translateY(0)     scale(1.15, .8); }
-    22%  { transform:translateY(-92%)  scale(.92,1.08); }
-    45%  { transform:translateY(-118%) scale(1,1); }
-    68%  { transform:translateY(-92%)  scale(.92,1.08); }
-    92%  { transform:translateY(0)     scale(1.15,.8); }
-    100% { transform:translateY(0)     scale(1,.8); }
+    0%   { transform:translateY(0)     scale(1.12,.84); }
+    6%   { transform:translateY(0)     scale(.92,1.08); }
+    18%  { transform:translateY(-118%) scale(1,1); }
+    30%  { transform:translateY(0)     scale(1.12,.84); }
+    36%  { transform:translateY(0)     scale(.94,1.06); }
+    44%  { transform:translateY(-122%) scale(1,1); }
+    82%  { transform:translateY(0)     scale(1,1); }
+    90%  { transform:translateY(0)     scale(1.1,.86); }
+    100% { transform:translateY(0)     scale(1.12,.84); }
   }
 
   .count-wrap{
